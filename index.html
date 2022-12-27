@@ -1,29 +1,173 @@
 <html lang="en_us">
-    <head>
-        <title>MCommander2077's Site</title>
-        <meta charset="utf-8">
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
+
+<head>
+    <title>MCommander2077's Site</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+            pointer-events: none;
+            background-color: #000000;
+        }
+
+        .box {
+            background-image: url(bg.jpg);
+            background-size: cover;
+            position: static;
+            height: 100vh;
+        }
+
+        .button {
+            width: 300px;
+            height: 80px;
+            line-height: 70px;
+            margin-left: 0;
+            cursor: pointer;
+            background-color: #36b030;
+            border-radius: 2px;
+            text-align: center;
+            border-color: #5bed23 #4dd728 #268e18 #1b8908;
+            border-style: solid;
+            border-width: 5px;
+        }
+
+        .button,
+        .button-content {
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+
+        .button-content {
+            line-height: 5px;
+        }
+
+        .button-sub-title,
+        .button-title {
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+            color: #fff;
+        }
+
+        .button-title {
+            font-weight: 700;
+            font-size: 25px;
+        }
+
+        .button-sub-title {
+            font-size: 13px;
+        }
+
+        .button-sub-title,
+        .button-title {
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+            color: #fff;
+        }
+
+        .button:hover,
+        .button:hover .button-content {
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+
+        .button:hover {
+            width: 350px;
+            height: 100px;
+            line-height: 90px;
+            margin-left: -25px;
+            margin-top: -10px;
+            background-color: #57606f;
+            border-color: #697385 #697385 #4c5461 #505866;
+            border-style: solid;
+            border-width: 5px;
+            font-size: 32px;
+        }
+
+        .button:hover .button-sub-title {
+            font-size: 17px;
+        }
+
+        .button:hover .button-sub-title,
+        .button:hover .button-title {
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+
+        .button:hover .button-sub-title,
+        .button:hover .button-title {
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+
+        .button:hover .button-title {
+            font-size: 30px;
+        }
+
+        div.bottom {
+            color: #a4b0be;
+        }
+
+        .small-font,
+        div.bottom {
+            font-size: 10px;
+        }
+
+        .logo {
+            padding-left: 120px;
+            padding-buttom: 30px
+        }
+    </style>
+</head>
+
+<body>
+    <header class="mc-header mdui-appbar mdui-appbar-fixed mdui-text-color-white mdui-headroom"
+        style="background-color: rgba(53, 205, 255, 0.3);">
+        <div class="mdui-toolbar" style="margin-left: auto;margin-right: auto;width: 70vw;">
+            <h1>MCommander2077's Site</h1>
+            <!--span class="mdui-typo-title">LTS-Survival</span-->
+            <div class="mdui-toolbar-spacer"></div>
+        </div>
+    </header>
+    <p>欢迎来到我的页面</p>
+    <p>这是我的一些联系方式</p>
+    <p>微信:MCommander2077(区分大小写)</p>
+    <p>qq:2679935111</p>
+    <p>邮箱:2679935111@qq.com</p>
+    <p>打钱请认准微信（</p>
+    <h2>工具箱</h2>
+    <a href="https://lts.gamesmc.online">我的服务器</a>正在...
+    <div class="server-status">
+        <span class="server-online"></span>
+    </div>
+
+    <script src="https://mcapi.us/scripts/minecraft.min.js"></script>
+    <script>
+        MinecraftAPI.getServerStatus('ddns.gamesmc.online', {
+            port: 25565 // optional, only if you need a custom port
+        }, function (err, status) {
+            if (err) {
+                return document.querySelector('.server-status').innerHTML = 'Error loading status';
             }
-            canvas {
-                width: 100%;
-                height: 100%;
-            }
-            #canvas {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                display: none;
-                pointer-events: none;
-                background-color: #000000;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>MCommander2077's Site</h1>
-    </body>
+
+            // you can change these to your own message!
+            document.querySelector('.server-online').innerHTML = status.online ? '工作中！' : '重启或者炸掉了。。。';
+        });
+    </script>
+</body>
+
 </html>
